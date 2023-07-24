@@ -2,6 +2,7 @@ import "../src/input.css";
 
 import React, { useState } from "react";
 import PartyForm from "./components/PartyForm";
+import PartyFormPopup from "./components/PartyFormPopup";
 import PartyTable from "./components/PartyTable";
 import SearchBar from "./components/SearchBar";
 
@@ -9,6 +10,15 @@ const App = () => {
     const [parties, setParties] = useState([]);
     const [editingParty, setEditingParty] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handleOpenPopup = () => {
+        setShowPopup(true);
+    };
+
+    const handleClosePopup = () => {
+        setShowPopup(false);
+    };
 
     const addParty = (party) => {
         setParties([...parties, party]);
@@ -40,11 +50,20 @@ const App = () => {
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-3xl font-bold mb-4">Party Management App</h1>
-            <PartyForm
-                addParty={addParty}
-                editingParty={editingParty}
-                updateParty={updateParty}
-            />
+            <button
+                onClick={handleOpenPopup}
+                className="bg-blue-500 text-white py-2 px-4 mt-2 rounded"
+            >
+                {editingParty ? "Edit Party" : "Add Party"}
+            </button>
+            {showPopup && (
+                <PartyFormPopup
+                    onClose={handleClosePopup}
+                    addParty={addParty}
+                    editingParty={editingParty}
+                    updateParty={updateParty}
+                />
+            )}
             <SearchBar onSearch={handleSearch} />
             <PartyTable
                 parties={searchResults.length > 0 ? searchResults : parties}

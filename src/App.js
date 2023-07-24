@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import "../src/input.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React, { useState } from "react";
+import PartyForm from "./components/PartyForm";
+import PartyTable from "./components/PartyTable";
+import SearchBar from "./components/SearchBar";
+
+const App = () => {
+    const [parties, setParties] = useState([]);
+    const [editingParty, setEditingParty] = useState(null);
+    const [searchResults, setSearchResults] = useState([]);
+
+    const addParty = (party) => {
+        setParties([...parties, party]);
+    };
+
+    const editParty = (party) => {
+        setEditingParty(party);
+    };
+
+    const updateParty = (updatedParty) => {
+        setParties(
+            parties.map((party) =>
+                party.id === updatedParty.id ? updatedParty : party
+            )
+        );
+        setEditingParty(null);
+    };
+
+    const deleteParty = (partyId) => {
+        setParties(parties.filter((party) => party.id !== partyId));
+    };
+    const handleSearch = (searchTerm) => {
+        const filteredParties = parties.filter((party) =>
+            party.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setSearchResults(filteredParties);
+    };
+
+    return (
+        <div className="container mx-auto p-4">
+            <h1 className="text-3xl font-bold mb-4">Party Management App</h1>
+            <PartyForm
+                addParty={addParty}
+                editingParty={editingParty}
+                updateParty={updateParty}
+            />
+            <SearchBar onSearch={handleSearch} />
+            <PartyTable
+                parties={searchResults.length > 0 ? searchResults : parties}
+                editParty={editParty}
+                deleteParty={deleteParty}
+            />
+        </div>
+    );
+};
 
 export default App;

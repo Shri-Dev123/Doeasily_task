@@ -41,7 +41,7 @@ const PartyForm = ({ addParty, editingParty, updateParty, onClose }) => {
                 groups: [...selectedGroups],
             });
         }
-    }, [editingParty, selectedGroups]);
+    }, [editingParty]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;

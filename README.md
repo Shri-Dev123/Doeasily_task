@@ -46,6 +46,8 @@ The app will now be running on http://localhost:3000. You can access it through 
 
 - **Edit Party Details:** To update the details of a party, click the "Edit" button in the corresponding row. The form will open with the existing details pre-filled. Modify the information as needed and click "Update Party" to save the changes.
 
+- **Search Party By Name:** To Search the details of a party, input the name of the party inthe search input field. Then click on the Search button to show the table according to the search term.
+
 - **Delete a Party:** If you wish to remove a party from the list, click the "Delete" button in the corresponding row. Confirm the deletion, and the party will be removed from the list.
 
 ## Technologies Used

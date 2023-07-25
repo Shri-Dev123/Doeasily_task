@@ -10,7 +10,7 @@ const PartyFormPopup = ({ onClose, ...props }) => {
         <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="bg-white p-4 w-1/4 md:w-2/3 lg:w-2/3 rounded-lg shadow-lg">
                 <button
-                    className="absolute top-2 right-2 bg-red-500 rounded-xl p-2 text-gray-600 hover:text-gray-800"
+                    className="absolute top-2 right-2 bg-red-500 rounded-xl p-2 text-amber-100 hover:text-white"
                     onClick={handleClose}
                 >
                     X-Close

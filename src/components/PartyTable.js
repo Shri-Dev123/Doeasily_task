@@ -1,54 +1,90 @@
-// PartyTable.js
-
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const PartyTable = ({ parties, editParty, deleteParty }) => {
     return (
-        <table className="w-full mt-4">
+        <table className="w-full mt-4 border-collapse border border-gray-400">
             <thead>
                 <tr>
-                    <th className="py-2 px-3 bg-gray-300">Name</th>
-                    <th className="py-2 px-3 bg-gray-300">Mobile</th>
-                    <th className="py-2 px-3 bg-gray-300">Address</th>
-                    <th className="py-2 px-3 bg-gray-300">City</th>
-                    <th className="py-2 px-3 bg-gray-300">Pincode</th>
-                    <th className="py-2 px-3 bg-gray-300">GSTIN</th>
-                    <th className="py-2 px-3 bg-gray-300">PAN</th>
-                    <th className="py-2 px-3 bg-gray-300">Aadhaar</th>
-                    <th className="py-2 px-3 bg-gray-300">groups</th>
-                    <th className="py-2 px-3 bg-gray-300">Actions</th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        Name
+                    </th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        Mobile
+                    </th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        Address
+                    </th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        City
+                    </th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        Pincode
+                    </th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        GSTIN
+                    </th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        PAN
+                    </th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        Aadhaar
+                    </th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        groups
+                    </th>
+                    <th className="py-2 px-3 bg-gray-300 border border-gray-400">
+                        Actions
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 {parties.map((party) => (
                     <tr key={party.id}>
-                        <td className="py-2 px-4">{party.name}</td>
-                        <td className="py-2 px-4">{party.mobile}</td>
-                        <td className="py-2 px-4">{party.address}</td>
-                        <td className="py-2 px-4">{party.city}</td>
-                        <td className="py-2 px-4">{party.pin}</td>
-                        <td className="py-2 px-4">{party.gst}</td>
-                        <td className="py-2 px-4">{party.pan}</td>
-                        <td className="py-2 px-4">{party.aadhaar}</td>
-                        <td className="py-2 px-4">
+                        <td className="py-2 px-4 border border-gray-400">
+                            {party.name}
+                        </td>
+                        <td className="py-2 px-4 border border-gray-400">
+                            {party.mobile}
+                        </td>
+                        <td className="py-2 px-4 border border-gray-400">
+                            {party.address}
+                        </td>
+                        <td className="py-2 px-4 border border-gray-400">
+                            {party.city}
+                        </td>
+                        <td className="py-2 px-4 border border-gray-400">
+                            {party.pin}
+                        </td>
+                        <td className="py-2 px-4 border border-gray-400">
+                            {party.gst}
+                        </td>
+                        <td className="py-2 px-4 border border-gray-400">
+                            {party.pan}
+                        </td>
+                        <td className="py-2 px-4 border border-gray-400">
+                            {party.aadhaar}
+                        </td>
+                        <td className="py-2 px-4 border border-gray-400">
                             {party.groups.map((group, index) => (
-                                <ul>
-                                    <li key={index}>{group.value}</li>
+                                <ul key={index}>
+                                    <li>{group.value}</li>
                                 </ul>
                             ))}
                         </td>
-                        <td className="py-2 px-4">
+                        <td className="py-1 px-2 border border-gray-400">
                             <button
                                 onClick={() => editParty(party)}
-                                className="bg-green-500 text-white py-1 px-2 rounded mr-2"
+                                className="bg-green-500 text-white py-1 px-1 rounded mr-2"
                             >
-                                Edit
+                                <FontAwesomeIcon icon={faEdit} />{" "}
                             </button>
                             <button
                                 onClick={() => deleteParty(party.id)}
-                                className="bg-red-500 text-white py-1 px-2 rounded"
+                                className="bg-red-500 text-white py-1 px-1 rounded"
                             >
-                                Delete
+                                <FontAwesomeIcon icon={faTrash} />{" "}
                             </button>
                         </td>
                     </tr>

@@ -1,7 +1,5 @@
 import "../src/input.css";
-
 import React, { useState } from "react";
-import PartyForm from "./components/PartyForm";
 import PartyFormPopup from "./components/PartyFormPopup";
 import PartyTable from "./components/PartyTable";
 import SearchBar from "./components/SearchBar";
@@ -54,7 +52,7 @@ const App = () => {
                 onClick={handleOpenPopup}
                 className="bg-blue-500 text-white py-2 px-4 mt-2 rounded"
             >
-                {editingParty ? "Edit Party" : "Add Party"}
+                {editingParty ? "Edit Party" : "Add Party +"}
             </button>
             {showPopup && (
                 <PartyFormPopup

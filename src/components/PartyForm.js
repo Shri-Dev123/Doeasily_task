@@ -41,7 +41,7 @@ const PartyForm = ({ addParty, editingParty, updateParty, onClose }) => {
                 groups: [...selectedGroups],
             });
         }
-    }, [editingParty]);
+    }, [editingParty, selectedGroups]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -205,8 +205,6 @@ const PartyForm = ({ addParty, editingParty, updateParty, onClose }) => {
                             required
                         />
                     </div>
-                    {/* Add similar divs for other fields */}
-                    {/* ... (rest of the input fields with labels) */}
                 </div>
             </div>
             <button
